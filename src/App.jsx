@@ -15,14 +15,14 @@ const dataAnimationGroups = [Lghtning_1, Lghtning_2, Lghtning_3, Lghtning_4];
 
 const translations = {
   ru: {
-    h1: "Затишье перед бурей",
-    p: "Ваши поинты сохранены и будут доступны после обновления",
-    button: "Hезультаты",
+    h1: <>Затишье <br /> перед бурей</>,
+    p: <>Ваши поинты сохранены и будут <br /> доступны после обновления</>,
+    button: <>Результаты</>,
   },
   en: {
-    h1: "The calm before the storm",
-    p: "Your points are saved and will be available after the update",
-    button: "Retrodrop season 1",
+    h1: <>The calm before <br /> the storm</>,
+    p: <>Your points are saved and will be <br /> available after the update</>,
+    button: <>Retrodrop season 1</>,
   },
 };
 
