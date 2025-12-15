@@ -15,19 +15,35 @@ const dataAnimationGroups = [Lghtning_1, Lghtning_2, Lghtning_3, Lghtning_4];
 
 const translations = {
   ru: {
-    h1: <>Затишье <br /> перед бурей</>,
-    p: <>Ваши поинты сохранены и будут <br /> доступны после обновления</>,
+    h1: (
+      <>
+        Затишье <br /> перед бурей
+      </>
+    ),
+    p: (
+      <>
+        Ваши поинты сохранены и будут <br /> доступны после обновления
+      </>
+    ),
     button: <>Результаты</>,
   },
   en: {
-    h1: <>The calm before <br /> the storm</>,
-    p: <>Your points are saved and will be <br /> available after the update</>,
+    h1: (
+      <>
+        The calm before <br /> the storm
+      </>
+    ),
+    p: (
+      <>
+        Your points are saved and will be <br /> available after the update
+      </>
+    ),
     button: <>Retrodrop season 1</>,
   },
 };
 
 const clickButton = () => {
-  alert("Нужна ссылка)")
+  window.open("https://app.xnode.pro/profile", "_blank");
 };
 
 function App() {

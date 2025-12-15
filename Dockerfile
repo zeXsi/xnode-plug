@@ -1,27 +1,24 @@
-# 1. Используем Node.js (lts)
-FROM node:lts
-
-# 2. Рабочая папка
+# 1) build
+FROM node:lts AS build
 WORKDIR /app
 
-# 3. Копируем package*.json
 COPY package.json package-lock.json ./
+RUN npm ci --legacy-peer-deps
 
-# 4. Устанавливаем зависимости
-RUN npm install --legacy-peer-deps
-
-# 5. Копируем все остальные файлы
 COPY . .
-
-# 7. Собираем production-бандл в папку build
 RUN npm run build
-RUN npm install -g serve
 
-# 8. Открываем порт
-EXPOSE 5020
+# 2) run
+FROM nginx:alpine
 
-# 9. Запускаем сайт через serve
-# CMD ["serve", "-s", "build"]
-CMD ["serve", "-s", "dist", "-l", "5020"]
-# CMD ["serve", "-s", "build", "-l", "0.0.0.0:5020"]
-# CMD ["serve", "-s", "build", "-l", "tcp://0.0.0.0:5020"]
+# удалим дефолтный конфиг
+RUN rm /etc/nginx/conf.d/default.conf
+
+# добавим наш
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# положим dist в папку nginx
+COPY --from=build /app/dist /usr/share/nginx/html
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
